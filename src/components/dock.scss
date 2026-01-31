@@ -1,42 +1,26 @@
 .dock {
   display: flex;
-  gap: 0.75rem;
-
-  position: absolute;
-  bottom: 1rem;
+  align-items: center;
+  position: fixed;
+  bottom: 12px;
   left: 50%;
   transform: translateX(-50%);
 
-  background-color: rgba(63, 63, 63, 0.395);
-  padding-inline: 1rem;
-  padding-block: 0.75rem;
-  border-radius: 0.75rem;
+  padding: 10px 14px;
+  gap: 14px;
 
-  backdrop-filter: blur(5px);
+  background: rgba(255, 255, 255, 0.08); // ← THE COLOR LAYER
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 24px;
+
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
 
   z-index: 99999;
-
-  .icon {
-    padding: 0.65rem;
-    border-radius: 0.25rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    aspect-ratio: 1/1;
-    height: 3.75rem;
-    width: 3.75rem;
-
-    transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
-  }
-
-  .launchpad {
-    background: linear-gradient(
-      to bottom,
-      rgb(223, 223, 223),
-      rgb(183, 183, 183)
-    );
-  }
 
   .github,
   .cli {
@@ -68,12 +52,45 @@
     );
   }
 
-  .icon:hover {
-    transform: scale(1.25) translateY(-20%);
+  .launchpad {
+    background: linear-gradient(
+      to bottom,
+      rgb(223, 223, 223),
+      rgb(183, 183, 183)
+    );
   }
 
-  .icon:hover + .icon,
-  .icon:has(+ .icon:hover) {
-    transform: scale(1.1) translateY(-10%);
+  .icon {
+    position: relative;
+    display: grid;
+    place-items: center;
+    transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+
+    width: 58px;
+    height: 58px;
+    border-radius: 18px;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+  }
+
+  .icon img {
+    width: 35px;
+    height: 35px;
+    transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transform: translateY(0) scale(1);
+  }
+
+  .icon:hover{
+    transform: translateY(-22px) scale(2.2);
+  }
+
+  .icon:hover + .icon {
+    transform: translateY(-10px) scale(1.4);
+  }
+
+  .icon:active {
+    transform: translateY(-22px) scale(2.1);
+    filter: brightness(0.75);
   }
 }
