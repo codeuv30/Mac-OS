@@ -1,0 +1,39 @@
+.launchpad {
+  height: 100%;
+  width: 100%;
+
+  backdrop-filter: blur(40px) brightness(0.6);
+  background: rgba(0, 0, 0, 0.4);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  animation: fadeIn 0.25s ease;
+}
+
+
+.apps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  gap: 3rem;
+}
+
+.app {
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.app img {
+  width: 64px;
+}
+
+.app:hover {
+  transform: scale(1.15);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
